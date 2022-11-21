@@ -47,6 +47,15 @@ const addMatch = async (match) => {
     //group stage
     const stage = match.stage.split("_");
     match.stage = stage[0] + " " + stage[1];
+    //check the winner
+    let winnerTeam = "";
+    if (match.score.winner == "AWAY_TEAM") {
+      winnerTeam = match.awayTeam.name;
+    } else if (match.score.winner == "HOME_TEAM") {
+      winnerTeam = match.homeTeam.name;
+    } else {
+      winnerTeam = "TIE";
+    }
     await addDoc(matchesColRef, {
       awayTeam: match.awayTeam.name,
       date: date,
@@ -57,7 +66,7 @@ const addMatch = async (match) => {
       iconHomeTeamURL: match.homeTeam.crest,
       stage: match.stage,
       time: time,
-      winner: match.score.winner,
+      winner: winnerTeam,
       finalScore: match.score.fullTime.home + ":" + match.score.fullTime.away,
       api_ID: match.id,
     });
