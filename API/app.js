@@ -53,8 +53,8 @@ const addMatch = async (match) => {
       winnerTeam = match.awayTeam.name;
     } else if (match.score.winner == "HOME_TEAM") {
       winnerTeam = match.homeTeam.name;
-    } else {
-      winnerTeam = "TIE";
+    } else if (match.score.winner == "DRAW"){
+      winnerTeam = "Tie";
     }
     await addDoc(matchesColRef, {
       awayTeam: match.awayTeam.name,
@@ -77,6 +77,8 @@ const updateMatches = async () => {
   const data = await getMatchesFromAPI();
   data.matches.forEach(async (match) => await addMatch(match));
 };
+
+// getMatchesFromAPI().then(data => console.log(data.matches[3]));
 
 updateMatches()
   .then(() => console.log("Done!"))
