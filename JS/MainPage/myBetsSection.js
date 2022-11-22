@@ -62,18 +62,21 @@ const createOpeningBet = (form) => {
   <select class="form-select mt-2 mb-5" size="4" aria-label="Winner select">
   </select>
   </form>`;
-  getArrayOfTeams().
-    then(arrayOfTeams => {
-      const selectWinner = document.querySelector('.form-select');
-      arrayOfTeams.forEach((team, index) => {
-        if (!index) {
-          selectWinner.innerHTML += `<option selected value="${team}">${team}</option>`;
-        } else selectWinner.innerHTML += `<option value="${team}">${team}</option>`
-      });
+  const selectWinner = document.querySelector('.form-select');
+  if (selectWinner != null) {
+    getArrayOfTeams().
+      then(arrayOfTeams => {
+
+        arrayOfTeams.forEach((team, index) => {
+          if (!index) {
+            selectWinner.innerHTML += `<option selected value="${team}">${team}</option>`;
+          } else selectWinner.innerHTML += `<option value="${team}">${team}</option>`
+        });
 
 
-    })
-    .catch(err => console.log(err));
+      })
+      .catch(err => console.log(err));
+  }
 }
 
 
@@ -100,7 +103,7 @@ const addMatchToForm = (form, match, counter, index) => {
   //check if where to insert the match, first col or second col
   const rowName = `form${index}Row${Math.floor(counter / 2)}`;
   //if bigger than group stage 
-  if(!match.group) match.group = match.stage;
+  if (!match.group) match.group = match.stage;
   //if even first col, odd second col
   if (!(counter % 2)) {
     form.innerHTML += `
@@ -286,7 +289,7 @@ const addEvenetListenersToForms = () => {
         }
       }
       const betButton = document.querySelector(`#submitFormNumber${i}`);
-      betButton.value = "Bet Sent!" 
+      betButton.value = "Bet Sent!"
     });
   }
 };
@@ -336,8 +339,10 @@ const getCurrentTime = () => {
   const day = fullDate[0].split("/")[1];
   const month = fullDate[0].split("/")[0];
   const year = fullDate[0].split("/")[2];
-
   let hour = fullDate[1].split(":")[0];
+  //12 AM --> 00
+  if (hour == 12 && fullDate[1].split(":")[2].includes("AM")) hour = 0;
+  //1 PM --> 13, 2 PM --> 14
   if (fullDate[1].split(":")[2].includes("PM")) hour = Number(hour) + 12;
   const minute = fullDate[1].split(":")[1];
 

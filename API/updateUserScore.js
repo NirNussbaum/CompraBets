@@ -81,7 +81,7 @@ const updateScore = async () => {
       if (addPoints == 3) totalSuperScore++;
       totalPoints += addPoints;
     }
-    console.log(`user ${userID} earned: ${totalPoints}`);
+    // console.log(`user ${userID} earned: ${totalPoints}`);
     if (totalPoints > currentPoints) {
       await updateDoc(userColRef, {
         score: totalPoints,
