@@ -54,4 +54,11 @@ input[type="number"] {
     height: 27px;
     width: 40px;
   }
+  .flagIcon {
+    height: 25px;
+    width: 20px;
+  }
+  .formsPerDate {
+    font-size: 12px;
+  }
 }
