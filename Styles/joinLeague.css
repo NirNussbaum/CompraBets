@@ -53,6 +53,7 @@
 .show {
   display: block;
 }
+
 .filtered {
   display: none !important;
 }
@@ -72,4 +73,22 @@ footer {
   bottom: 0;
   width: 100%;
   opacity: 70%;
+}
+
+/*Mobile*/
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .container {
+    display: block;
+    max-width: 365px;
+    margin-top: 50px !important;
+    padding: 40px 16px 45px 16px !important;
+  }
+
+  #submitButton {
+    margin-top: 30px !important;
+    padding: 12px 90px !important;
+  }
+
+  #searchLeagueButton {
+  }
 }

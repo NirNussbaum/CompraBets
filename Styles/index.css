@@ -31,21 +31,25 @@ p {
 }
 
 /*Mobile*/
-@media screen and (max-width: 576px) {
+@media screen and (min-width: 320px) and (max-width: 480px) {
   .container {
-    display: block;
-    max-width: 400px;
-    margin-top: 50px !important;
+      display: block;
+      max-width: 360px;
+      margin-top: 50px !important;
+      padding: 40px 16px 60px 16px !important;
   }
 
   .logInForm {
-    max-width: 300px;
+      max-width: 300px;
   }
 
   .compraBetsLogo {
-    max-width: 350px;
+      max-width: 325px;
+      margin-bottom: 50px !important;
+  }
+
+  #logInButton {
+      margin-top: 38px !important;
+      padding: 10px 80px !important;
   }
 }
-
-/*Big Screens*/
-@media screen and (min-width: 1700px) {}

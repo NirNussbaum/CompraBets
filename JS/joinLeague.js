@@ -103,7 +103,6 @@ submitButton.addEventListener("click", (e) => {
     .then(() => {
       updateLeagueInUserCollection(userNameHref.textContent, league.name).then(
         () => {
-          alert("DB Update");
           window.location = "./mainPage.html";
         }
       );

@@ -21,6 +21,37 @@ input[type="number"] {
   height: 20px;
   width: 40px;
 }
+
 #rulesPage {
   background-color: white;
+}
+
+/*Mobile*/
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .container {
+    padding: 40px 16px 0px 16px !important;
+  }
+  .leagueTable {
+    padding-bottom: 250px !important;
+    margin-bottom: 30px !important;
+  }
+
+  .navDays {
+    margin-bottom: 40px !important;
+  }
+
+  .backwardbtn {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+  .forwardbtn {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+  input[type="number"] {
+    height: 27px;
+    width: 40px;
+  }
 }

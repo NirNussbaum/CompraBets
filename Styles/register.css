@@ -27,21 +27,25 @@ body {
 }
 
 /*Mobile*/
-@media screen and (max-width: 576px) {
+@media screen and (min-width: 320px) and (max-width: 480px) {
     .container {
         display: block;
-        max-width: 400px;
+        max-width: 360px;
         margin-top: 50px !important;
+        padding: 40px 16px 45px 16px !important;
     }
 
     .logInForm {
-        max-width: 300px;
+        max-width: 315px;
     }
 
     .compraBetsLogo {
-        max-width: 350px;
+        max-width: 325px;
+        margin-bottom: 50px !important;
+    }
+
+    #registerButton {
+        margin-top: 30px !important;
+        padding: 12px 90px !important;
     }
 }
-
-/*Big Screens*/
-@media screen and (min-width: 1700px) {}

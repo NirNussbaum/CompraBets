@@ -24,7 +24,7 @@ body {
 
 /* user section font size */
 .userSection {
-  font-size: 19px;
+  font-size: 18px;
 }
 
 /* center a button */
@@ -48,4 +48,29 @@ footer {
   bottom: 0;
   width: 100%;
   opacity: 70%;
+}
+
+/*Mobile*/
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .container {
+    display: block;
+    max-width: 375px;
+    margin-top: 50px !important;
+    padding: 40px 16px 45px 16px !important;
+  }
+
+  .compraBetsLogo {
+    position: relative;
+    right: 42px;
+    max-width: 300px;
+  }
+
+  .userSection {
+    position: relative;
+    left: 45px;
+    top: 12px;
+  }
+  footer {
+    font-size: 15px;
+  }
 }
