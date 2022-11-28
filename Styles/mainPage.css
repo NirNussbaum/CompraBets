@@ -31,6 +31,7 @@ input[type="number"] {
   .container {
     padding: 40px 16px 0px 16px !important;
   }
+
   .leagueTable {
     padding-bottom: 250px !important;
     margin-bottom: 30px !important;
@@ -53,12 +54,5 @@ input[type="number"] {
   input[type="number"] {
     height: 27px;
     width: 40px;
-  }
-  .flagIcon {
-    height: 25px;
-    width: 20px;
-  }
-  .formsPerDate {
-    font-size: 12px;
   }
 }
