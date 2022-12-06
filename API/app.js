@@ -29,7 +29,7 @@ const getMatchesFromAPI = async () => {
 };
 
 const addMatch = async (match) => {
-  if (match.stage == "GROUP_STAGE") {
+  if (match.homeTeam.crest != null) {
     const fullDate = match.utcDate.split("T");
     //date
     let date = fullDate[0];
@@ -49,12 +49,27 @@ const addMatch = async (match) => {
     match.stage = stage[0] + " " + stage[1];
     //check the winner
     let winnerTeam = "";
-    if (match.score.winner == "AWAY_TEAM") {
-      winnerTeam = match.awayTeam.name;
+    if (
+      match.score.winner == "DRAW" ||
+      match.score.duration == "PENALTY_SHOOTOUT"
+    ) {
+      winnerTeam = "Tie";
     } else if (match.score.winner == "HOME_TEAM") {
       winnerTeam = match.homeTeam.name;
-    } else if (match.score.winner == "DRAW"){
-      winnerTeam = "Tie";
+    } else if (match.score.winner == "AWAY_TEAM") {
+      winnerTeam = match.awayTeam.name;
+    }
+    let finalResultGame = "";
+    let homeTeamResult, awayTeamResult;
+    if (match.score.duration != "REGULAR") {
+      homeTeamResult =
+        match.score.regularTime.home + match.score.extraTime.home;
+      awayTeamResult =
+        match.score.regularTime.away + match.score.extraTime.away;
+      finalResultGame = homeTeamResult + ":" + awayTeamResult;
+    } else {
+      finalResultGame =
+        match.score.fullTime.home + ":" + match.score.fullTime.away;
     }
     await addDoc(matchesColRef, {
       awayTeam: match.awayTeam.name,
@@ -67,7 +82,7 @@ const addMatch = async (match) => {
       stage: match.stage,
       time: time,
       winner: winnerTeam,
-      finalScore: match.score.fullTime.home + ":" + match.score.fullTime.away,
+      finalScore: finalResultGame,
       api_ID: match.id,
     });
   }
@@ -78,7 +93,14 @@ const updateMatches = async () => {
   data.matches.forEach(async (match) => await addMatch(match));
 };
 
-// getMatchesFromAPI().then(data => console.log(data.matches[3]));
+// getMatchesFromAPI().then((data) =>
+//   console.log(
+//     data.matches[52].score.regularTime.away +
+//       data.matches[52].score.extraTime.away +
+//       data.matches[52].score.regularTime.home +
+//       data.matches[52].score.extraTime.home
+//   )
+// );
 
 updateMatches()
   .then(() => console.log("Done!"))
