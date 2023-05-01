@@ -1,3 +1,8 @@
+
+https://user-images.githubusercontent.com/110348133/235435788-d9f3624e-ac37-4c2e-b4db-ee552fe4eeaf.mov
+
+
+
 # Introduction
 The World Cup is a global event that captures the attention of millions of football fans around the world. This cutting-edge web-based betting app provides a unique and exciting way for fans to engage with the FIFA World Cup Qatar 2022 by allowing them to place bets on their favorite national teams, The app also provides functionality to maintain leagues for groups of friends, where they can keep scores, favorite teams and more.
 
